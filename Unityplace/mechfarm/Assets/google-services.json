@@ -2,6 +2,7 @@
   "project_info": {
     "project_number": "228883323193",
     "project_id": "mechfarm-c0564",
+    "firebase_url": "https://mechfarm-c0564-default-rtdb.firebaseio.com",
     "storage_bucket": "mechfarm-c0564.appspot.com"
   },
   "client": [

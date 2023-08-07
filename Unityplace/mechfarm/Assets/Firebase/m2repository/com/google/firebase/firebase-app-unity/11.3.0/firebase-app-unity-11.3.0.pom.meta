@@ -1,11 +1,3 @@
-fileFormatVersion: 2
-guid: 6fa00b2d4bcc49ddb521ef64a4adb22c
-labels:
-- gvh
-- gvh_version-11.3.0
-- gvhp_exportpath-Firebase/m2repository/com/google/firebase/firebase-app-unity/11.3.0/firebase-app-unity-11.3.0.pom
-timeCreated: 1480838400
-DefaultImporter:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+version https://git-lfs.github.com/spec/v1
+oid sha256:e4437083fd2a1091c09f624704208d520868e08e1223f7073239f4eecb0d246f
+size 305

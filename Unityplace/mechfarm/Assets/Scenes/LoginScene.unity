@@ -458,7 +458,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1822753059}
         m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
-        m_MethodName: register
+        m_MethodName: Create
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -706,8 +706,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.924, y: 0}
-  m_SizeDelta: {x: 107.85, y: 30}
+  m_AnchoredPosition: {x: 25.7, y: -0.000012219}
+  m_SizeDelta: {x: 136.709, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &625763414
 MonoBehaviour:
@@ -1039,8 +1039,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.79993, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -8.499508, y: 0}
+  m_SizeDelta: {x: 217, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &793406967
 MonoBehaviour:
@@ -1443,8 +1443,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.925, y: -64}
-  m_SizeDelta: {x: 107.8478, y: 30}
+  m_AnchoredPosition: {x: 25.7, y: -63.3}
+  m_SizeDelta: {x: 136.71, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1256822289
 MonoBehaviour:
@@ -2182,8 +2182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474842318b01e4eeeac387df5aebf083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emailField: {fileID: 625763414}
-  passField: {fileID: 1256822289}
+  email: {fileID: 625763414}
+  password: {fileID: 1256822289}
 --- !u!1 &1835600297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,7 +2218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.703, y: -67.7}
+  m_AnchoredPosition: {x: -91.8, y: -63.3}
   m_SizeDelta: {x: 60.5932, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1835600299
@@ -2401,9 +2401,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1530266799}
-        m_TargetAssemblyTypeName: MovetoMain, Assembly-CSharp
-        m_MethodName: moveScene
+      - m_Target: {fileID: 1822753059}
+        m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
+        m_MethodName: Login
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2413,9 +2413,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1822753059}
-        m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
-        m_MethodName: login
+      - m_Target: {fileID: 1530266799}
+        m_TargetAssemblyTypeName: MovetoMain, Assembly-CSharp
+        m_MethodName: moveScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

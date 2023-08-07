@@ -16,13 +16,13 @@ public class FirebaseAuthManager : MonoBehaviour
     public TMP_InputField password;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         auth = FirebaseAuth.DefaultInstance;
     }
-    void Create()
+    public void Create()
     {
-        auth.CreateUserWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task => 
+        auth.CreateUserWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task =>
         {
             if (task.IsCanceled)
             {
@@ -34,15 +34,15 @@ public class FirebaseAuthManager : MonoBehaviour
                 Debug.LogError("회원가입 실패");
                 return;
             }
-            
+
             FirebaseUser newUser = task.Result.User; // Get the FirebaseUser from AuthResult
             Debug.LogError("회원가입 완료");
         });
     }
 
-    void Login()
+    public void Login()
     {
-        auth.SignInWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task => 
+        auth.SignInWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task =>
         {
             if (task.IsCanceled)
             {
@@ -54,13 +54,14 @@ public class FirebaseAuthManager : MonoBehaviour
                 Debug.LogError("로그인 실패");
                 return;
             }
-            
+
             FirebaseUser newUser = task.Result.User; // Get the FirebaseUser from AuthResult
             Debug.LogError("로그인 완료");
         });
     }
 
-    void LogOut(){
+    public void LogOut()
+    {
         auth.SignOut();
         Debug.Log("로그아웃");
     }

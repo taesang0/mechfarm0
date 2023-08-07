@@ -1,11 +1,3 @@
-fileFormatVersion: 2
-guid: 77b3ea7062794701a7197815f9d2dc46
-labels:
-- gvh
-- gvh_version-11.3.0
-- gvhp_exportpath-Firebase/m2repository/com/google/firebase/firebase-analytics-unity/11.3.0/firebase-analytics-unity-11.3.0.srcaar
-timeCreated: 1480838400
-DefaultImporter:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+version https://git-lfs.github.com/spec/v1
+oid sha256:e5657036e2a701ad862e0d4de387499c05f3016ab27dd520551e9d61d6890f95
+size 320
