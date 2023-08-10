@@ -19,6 +19,6 @@ public class MovetoMain : MonoBehaviour
 
     public void moveScene()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Main");
     }
 }
