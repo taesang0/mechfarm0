@@ -15,10 +15,10 @@ public class CFirebase : MonoBehaviour
     {
         m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
  
-        WriteData("leets", "lettuce","temp","33");
-        WriteData("leets", "lettuce","humi","43");
-        WriteData("leets", "lettuce","soil_humi","53");
-        WriteData("leets", "lettuce","light","63");
+        // WriteData("leets", "lettuce","temp","33");
+        // WriteData("leets", "lettuce","humi","43");
+        // WriteData("leets", "lettuce","soil_humi","53");
+        // WriteData("leets", "lettuce","light","63");
 
         ReadUserData();
  
