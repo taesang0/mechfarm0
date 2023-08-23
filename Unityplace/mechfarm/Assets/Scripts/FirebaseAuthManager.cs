@@ -1,4 +1,5 @@
 using TMPro;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public TMP_InputField email;
     public TMP_InputField password;
+
+    public static event Action OnLoginSuccess;
 
     // Start is called before the first frame update
     public void Start()
@@ -57,6 +60,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
             FirebaseUser newUser = task.Result.User; // Get the FirebaseUser from AuthResult
             Debug.LogError("로그인 완료");
+            Debug.Log("Triggering OnLoginSuccess event.");
+            OnLoginSuccess?.Invoke();
         });
     }
 
