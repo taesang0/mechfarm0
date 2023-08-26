@@ -12,7 +12,14 @@ public class OpenWeatherWebAPI : MonoBehaviour
     public TMP_Text weatherText;
     public TMP_Text TimeText;
     public WeatherData weatherInfo;
-    
+    public string hour;
+    public string whether;
+    public GameObject day_background;
+    public GameObject evening_background;
+    public GameObject night_background;
+    public GameObject Cloud;
+    public GameObject Rain;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +33,7 @@ public class OpenWeatherWebAPI : MonoBehaviour
     {
         StartCoroutine(GetWeather(city));
     }
-
+//Clear, 
     IEnumerator GetWeather(string city)
     {
         city = UnityWebRequest.EscapeURL(city);
@@ -45,7 +52,20 @@ public class OpenWeatherWebAPI : MonoBehaviour
         
         if(weatherInfo.weather.Length>0)
         {
-            weatherText.text=weatherInfo.weather[0].main;
+            whether=weatherInfo.weather[0].main;
+            
+            //weatherText.text=weatherInfo.weather[0].main;
+
+            if (whether == "Clouds")
+            {
+                Cloud.SetActive(true);
+                Rain.SetActive(false);
+            }
+            else if (whether == "Rain")
+            {
+                Cloud.SetActive(true);
+                Rain.SetActive(true);
+            }
         }
         
     }
@@ -53,8 +73,31 @@ public class OpenWeatherWebAPI : MonoBehaviour
     {
         while(true)
         {
-            TimeText.text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            yield return new WaitForSeconds(1.0f);
+            //TimeText.text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            hour = DateTime.Now.ToString("HH");
+            
+            if(int.Parse(hour) >= 6 && int.Parse(hour)<= 18)//day
+            {
+                day_background.SetActive(true);
+                evening_background.SetActive(false);
+                night_background.SetActive(false);
+            }
+            else if(int.Parse(hour) < 6 && int.Parse(hour) >= 22) // night
+            {
+                day_background.SetActive(false);
+                evening_background.SetActive(false);
+                night_background.SetActive(true);
+            }
+            else
+            {
+                day_background.SetActive(false);
+                evening_background.SetActive(true);
+                night_background.SetActive(false);
+            }
+
+
+            Debug.Log(hour);
+            yield return new WaitForSeconds(100.0f); //100초마다 GetTime 실행 
         }
     }
 }
