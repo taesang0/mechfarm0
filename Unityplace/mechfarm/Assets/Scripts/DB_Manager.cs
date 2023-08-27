@@ -14,7 +14,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
          FirebaseApp.DefaultInstance.Options.DatabaseUrl = new Uri(DBurl);
         //  WriteDB();
-         ReadDB();
+        //  ReadDB();
     }
 
     public void WriteDB(){
