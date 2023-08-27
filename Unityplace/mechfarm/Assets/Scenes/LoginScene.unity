@@ -206,7 +206,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 686042734}
+      - m_Target: {fileID: 1530266799}
         m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
         m_MethodName: Create
         m_Mode: 1
@@ -895,52 +895,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
---- !u!1 &686042732
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 686042733}
-  - component: {fileID: 686042734}
-  m_Layer: 0
-  m_Name: AuthManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &686042733
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686042732}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 62.481316, y: 242.04503, z: -9.217823}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &686042734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686042732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474842318b01e4eeeac387df5aebf083, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  email: {fileID: 625763414}
-  password: {fileID: 1256822289}
 --- !u!1 &706345724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,12 +1978,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1530266797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75b4059848ae9d49bf625bb49409bb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 474842318b01e4eeeac387df5aebf083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  user_id: 
-  LoginObject: {fileID: 0}
-  Input_id: {fileID: 625763414}
+  email: {fileID: 625763414}
+  password: {fileID: 1256822289}
+  DBurl: https://farm0-b92d3-default-rtdb.firebaseio.com/
 --- !u!1 &1657852715
 GameObject:
   m_ObjectHideFlags: 0
@@ -2402,9 +2356,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 686042734}
+      - m_Target: {fileID: 1530266799}
         m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
         m_MethodName: Login
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1530266799}
+        m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
+        m_MethodName: Update
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2460,4 +2426,3 @@ SceneRoots:
   - {fileID: 751883675}
   - {fileID: 1341088214}
   - {fileID: 1530266798}
-  - {fileID: 686042733}

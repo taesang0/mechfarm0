@@ -8,18 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoginScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/MainScene.unity
-    guid: 48902510bfc649e43812d736796cea05
-  - enabled: 0
-    path: Assets/Scenes/WaterScene.unity
-    guid: fc2472790b47c714fbc19d1c330035fc
-  - enabled: 0
-    path: Assets/Scenes/TemperatureScene.unity
-    guid: 2bb149e34e1d86b4da0767b843e9877f
-  - enabled: 0
-    path: Assets/Scenes/WindyScene.unity
-    guid: ff142fe1411fff449ae5d0cb2f512e91
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: ac95806f736e07347b9dd09bded1dbd0

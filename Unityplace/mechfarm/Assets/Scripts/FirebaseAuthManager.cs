@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Auth;
 using UnityEngine.UI;
-
-
+using UnityEngine.SceneManagement;
+using Firebase;
+using Firebase.Database;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
@@ -16,30 +17,40 @@ public class FirebaseAuthManager : MonoBehaviour
     public TMP_InputField email;
     public TMP_InputField password;
 
-    public static event Action OnLoginSuccess;
+    public string DBurl = "https://farm0-b92d3-default-rtdb.firebaseio.com/";
+    DatabaseReference reference;
+    private bool state;
 
-    // Start is called before the first frame update
-    public void Start()
+    private void Start()
     {
         auth = FirebaseAuth.DefaultInstance;
+        state = false;
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => 
+        {
+            FirebaseApp app = FirebaseApp.DefaultInstance;
+            reference = FirebaseDatabase.DefaultInstance.RootReference;
+        });
+
     }
+
     public void Create()
     {
         auth.CreateUserWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task =>
         {
             if (task.IsCanceled)
             {
-                Debug.LogError("회원가입 취소");
+                Debug.Log("회원가입 취소");
                 return;
             }
             if (task.IsFaulted)
             {
-                Debug.LogError("회원가입 실패");
+                Debug.Log("회원가입 실패");
                 return;
             }
 
             FirebaseUser newUser = task.Result.User; // Get the FirebaseUser from AuthResult
-            Debug.LogError("회원가입 완료");
+            Debug.Log("회원가입 완료");
+            WriteDB(email.text);
         });
     }
 
@@ -47,22 +58,22 @@ public class FirebaseAuthManager : MonoBehaviour
     {
         auth.SignInWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task =>
         {
-            if (task.IsCanceled)
-            {
-                Debug.LogError("로그인 취소");
-                return;
-            }
-            if (task.IsFaulted)
-            {
-                Debug.LogError("로그인 실패");
-                return;
-            }
-
-            FirebaseUser newUser = task.Result.User; // Get the FirebaseUser from AuthResult
-            Debug.LogError("로그인 완료");
-            Debug.Log("Triggering OnLoginSuccess event.");
-            OnLoginSuccess?.Invoke();
+            if (task.IsCompleted && !task.IsFaulted && !task.IsCanceled)
+                {
+                    Debug.Log(email.text + " 로 로그인 하셨습니다.");
+                    state = true;
+                }
+                else
+                {
+                    Debug.Log("로그인에 실패하셨습니다.");
+                }
         });
+    }
+
+    public void Update(){
+        if(state == true){
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void LogOut()
@@ -71,4 +82,53 @@ public class FirebaseAuthManager : MonoBehaviour
         Debug.Log("로그아웃");
     }
 
+    public void WriteDB(string email){
+        Debug.Log("DB 실행");
+        UserData user = new UserData(email, "DefaultPlant"); // UserData를 생성합니다.
+
+        // email에서 @ 앞 부분만 가져옵니다.
+        string safeEmail = email.Split('@')[0];
+
+        // users/(로그인한 이메일의 @ 앞부분)/plant/DefaultPlant/ 아래에 데이터를 저장합니다.
+        reference.Child("users").Child(safeEmail).Child("plant").Child("DefaultPlant").Child("humi").SetValueAsync(user.humi);
+        reference.Child("users").Child(safeEmail).Child("plant").Child("DefaultPlant").Child("light").SetValueAsync(user.light);
+        reference.Child("users").Child(safeEmail).Child("plant").Child("DefaultPlant").Child("soil_humi").SetValueAsync(user.soil_humi);
+        reference.Child("users").Child(safeEmail).Child("plant").Child("DefaultPlant").Child("temp").SetValueAsync(user.temp);
+    }
+
+}
+
+public class UserData
+{
+    public string userName = "";
+    public string plantName = "";
+    public int humi = 0;
+    public int light = 0;
+    public int soil_humi = 0;
+    public int temp = 0;
+
+    public UserData(string userName, string defultPlantName){
+        this.userName = userName;
+        this.plantName = defultPlantName;
+    }
+
+    public void setPlantName(string plantName){
+        plantName = this.plantName;
+    }
+
+    public void setHumi(){
+        humi = this.humi;
+    }
+
+    public void setLight(){
+        light = this.light;
+    }
+
+    public void setSoilHumi(){
+        soil_humi = this.soil_humi;
+    }
+
+    public void setTemp(){
+        temp  = this.temp;
+    }
 }
