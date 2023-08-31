@@ -267,6 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 376188582}
   - component: {fileID: 376188583}
+  - component: {fileID: 376188584}
   m_Layer: 0
   m_Name: BtnGroupWindow
   m_TagString: Untagged
@@ -304,6 +305,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantButtonPrefab: {fileID: 1091534753}
   buttonContainer: {fileID: 1021460501}
+--- !u!114 &376188584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376188581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0730f486d287e412fa12cd29864594c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &613947118
 GameObject:
   m_ObjectHideFlags: 0

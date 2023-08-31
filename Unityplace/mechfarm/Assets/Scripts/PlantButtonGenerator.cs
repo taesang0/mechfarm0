@@ -15,6 +15,9 @@ public class PlantButtonGenerator : MonoBehaviour
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
+            MainThreadDispatcher.Enqueue(() => {
+                Debug.Log(plantButtonPrefab);
+            });
             FirebaseApp app = FirebaseApp.DefaultInstance;
             reference = FirebaseDatabase.DefaultInstance.RootReference;
 
@@ -40,7 +43,6 @@ public class PlantButtonGenerator : MonoBehaviour
                 {
                     Debug.Log(plant.Key);
                     // Debug.Log("buttonContainer" + buttonContainer);
-                    Debug.Log(plantButtonPrefab);
                     CreatePlantButton(plant.Key);
                 }
             }
@@ -50,11 +52,14 @@ public class PlantButtonGenerator : MonoBehaviour
     void CreatePlantButton(string plantName)
     {
         Debug.Log("createPlantbutton");
-        GameObject newButton = Instantiate(plantButtonPrefab, buttonContainer);
-        newButton.GetComponentInChildren<TextMeshProUGUI>().text = plantName;
-        // 이제 버튼 클릭 시 어떤 행동을 할지도 정의해야 합니다.
-        Button buttonComponent = newButton.GetComponent<Button>();
-        buttonComponent.onClick.AddListener(() => OnPlantButtonClicked(plantName));
+        MainThreadDispatcher.Enqueue(() => {
+            Debug.Log(plantButtonPrefab);
+            GameObject newButton = Instantiate(plantButtonPrefab.gameObject, buttonContainer);
+            newButton.GetComponentInChildren<TextMeshProUGUI>().text = plantName;
+            // 이제 버튼 클릭 시 어떤 행동을 할지도 정의해야 합니다.
+            Button buttonComponent = newButton.GetComponent<Button>();
+            buttonComponent.onClick.AddListener(() => OnPlantButtonClicked(plantName));
+        });
     }
 
     void OnPlantButtonClicked(string plantName)
