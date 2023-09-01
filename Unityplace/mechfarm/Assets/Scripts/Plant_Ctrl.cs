@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Plant_Ctrl : MonoBehaviour
 {
-    // public enum State
-    // {
-    //     IDLE,
-    //     COLD,
-    //     HOT,
-    //     DRY,
-    //     SLEEP,
-    //     SMILE,
-    //     oOo
-    // }
     private FB_Read readFBScript; 
     string max_state;
     float max_value;
+    private Animator animator;
     // public State state = State.IDLE;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -71,23 +67,36 @@ public class Plant_Ctrl : MonoBehaviour
                     else max_state= "lightness_L";
 
                 }
-                
+                animator_manager(animator,max_state);
 
             }
             Debug.Log(max_state);
         }
     }
 
-    // IEnumerator PlantAction()
-    // {
-    //     while(true)
-    //     {
-    //         switch(max_state)
-    //         {
-    //             case "temperature_H":
-
-    //         }
-    //     }
-    // }
+    void animator_manager(Animator ani,string state)
+    {
+        if (state == "soil_hummidity_H")
+        {
+            ani.SetBool("dry",true);
+            ani.SetBool("hot",false);
+            ani.SetBool("cold",false);
+            ani.SetBool("smile",false);
+        }
+        else if (state == "temperature_H")
+        {
+            ani.SetBool("dry",false);
+            ani.SetBool("hot",true);
+            ani.SetBool("cold",false);
+            ani.SetBool("smile",false);
+        }
+        else if (state == "temperature_L")
+        {
+            ani.SetBool("dry",false);
+            ani.SetBool("hot",false);
+            ani.SetBool("cold",true);
+            ani.SetBool("smile",false);
+        }
+    }
 
 }
