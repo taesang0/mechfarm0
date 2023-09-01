@@ -15,7 +15,8 @@ public class PlantButtonGenerator : MonoBehaviour
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
-            MainThreadDispatcher.Enqueue(() => {
+            MainThreadDispatcher.Enqueue(() =>
+            {
                 Debug.Log(plantButtonPrefab);
             });
             FirebaseApp app = FirebaseApp.DefaultInstance;
@@ -52,9 +53,16 @@ public class PlantButtonGenerator : MonoBehaviour
     void CreatePlantButton(string plantName)
     {
         Debug.Log("createPlantbutton");
-        MainThreadDispatcher.Enqueue(() => {
+        MainThreadDispatcher.Enqueue(() =>
+        {
             Debug.Log(plantButtonPrefab);
             GameObject newButton = Instantiate(plantButtonPrefab.gameObject, buttonContainer);
+            TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
+            if (buttonText != null)
+            {
+                buttonText.text = plantName;
+                buttonText.fontSize = 10; // 원하는 크기로 설정
+            }
             newButton.GetComponentInChildren<TextMeshProUGUI>().text = plantName;
             // 이제 버튼 클릭 시 어떤 행동을 할지도 정의해야 합니다.
             Button buttonComponent = newButton.GetComponent<Button>();
