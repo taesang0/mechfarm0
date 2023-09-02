@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Temperature : MonoBehaviour
 {
-    public GameObject fan;
+    public GameObject icepack;
     public GameObject stove;
     public float tempValue = 0;
     public void temp_onClick()
     {
         if (tempValue > 50)
         {
-            fan.SetActive(true);
+            icepack.SetActive(true);
             Invoke("falseactive", 3.0f);
         }
         else
@@ -23,6 +23,6 @@ public class Temperature : MonoBehaviour
     public void falseactive()
     {
         stove.SetActive(false);
-        fan.SetActive(false);
+        icepack.SetActive(false);
     }
 }
