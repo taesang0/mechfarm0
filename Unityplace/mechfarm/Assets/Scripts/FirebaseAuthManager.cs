@@ -62,6 +62,7 @@ public class FirebaseAuthManager : MonoBehaviour
             if (task.IsCompleted && !task.IsFaulted && !task.IsCanceled)
             {
                 Debug.Log(email.text + " 로 로그인 하셨습니다.");
+                SafeEmail = email.text.Split('@')[0];
                 state = true;
             }
             else
@@ -88,17 +89,24 @@ public class FirebaseAuthManager : MonoBehaviour
     public void WriteDB(string email)
     {
         Debug.Log("DB 실행");
-        UserData user = new UserData(email, "DefaultPlant"); // UserData를 생성합니다.
 
-        // email에서 @ 앞 부분만 가져옵니다.
-        SafeEmail = email.Split('@')[0];
+        SafeEmail = email.Split('@')[0]; // email에서 @ 앞 부분만 가져옵니다.
 
-        // users/(로그인한 이메일의 @ 앞부분)/plant/DefaultPlant/ 아래에 데이터를 저장합니다.
-        reference.Child("users").Child(SafeEmail).Child("plant").Child("DefaultPlant").Child("humi").SetValueAsync(user.humi);
-        reference.Child("users").Child(SafeEmail).Child("plant").Child("DefaultPlant").Child("light").SetValueAsync(user.light);
-        reference.Child("users").Child(SafeEmail).Child("plant").Child("DefaultPlant").Child("soil_humi").SetValueAsync(user.soil_humi);
-        reference.Child("users").Child(SafeEmail).Child("plant").Child("DefaultPlant").Child("temp").SetValueAsync(user.temp);
+        // 식물 이름들의 리스트
+        List<string> plantNames = new List<string> { "lettuce", "strawberry", "tomato", "watermelon" };
+
+        foreach (string plantName in plantNames)
+        {
+            UserData user = new UserData(email, plantName); // 각 식물 이름에 대한 UserData를 생성합니다.
+
+            // users/(로그인한 이메일의 @ 앞부분)/plant/(식물 이름)/ 아래에 데이터를 저장합니다.
+            reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("humi").SetValueAsync(user.humi);
+            reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("light").SetValueAsync(user.light);
+            reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("soil_humi").SetValueAsync(user.soil_humi);
+            reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("temp").SetValueAsync(user.temp);
+        }
     }
+
 
 }
 
