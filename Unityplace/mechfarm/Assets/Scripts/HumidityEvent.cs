@@ -9,12 +9,12 @@ public class HumidityEvent : MonoBehaviour
     public float humidValue = 0;
     public void Humidity_onClick()
     {
-        if (humidValue > 50)
+        if (humidValue > 70)
         {
             fan.SetActive(true);
             Invoke("falseactive", 3.0f);
         }
-        else
+        else if(humidValue < 60)
         {
             fog.SetActive(true);
             Invoke("falseactive", 3.0f);

@@ -82,7 +82,7 @@ public class OpenWeatherWebAPI : MonoBehaviour
                 evening_background.SetActive(false);
                 night_background.SetActive(false);
             }
-            else if(int.Parse(hour) < 6 && int.Parse(hour) >= 22) // night
+            else if(int.Parse(hour) < 6 || int.Parse(hour) >= 20) // night
             {
                 day_background.SetActive(false);
                 evening_background.SetActive(false);
