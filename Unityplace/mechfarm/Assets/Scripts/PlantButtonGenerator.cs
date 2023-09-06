@@ -23,7 +23,7 @@ public class PlantButtonGenerator : MonoBehaviour
             reference = FirebaseDatabase.DefaultInstance.RootReference;
 
             // 로그인한 사용자의 식물 데이터를 가져옵니다.
-            FetchPlants("leets");  // 예시로 "leets" 사용자의 식물 데이터를 가져옴
+            FetchPlants(FirebaseAuthManager.SafeEmail);  // 예시로 "leets" 사용자의 식물 데이터를 가져옴
         });
     }
 
