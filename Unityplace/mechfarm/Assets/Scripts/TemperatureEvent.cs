@@ -9,12 +9,12 @@ public class Temperature : MonoBehaviour
     public float tempValue = 0;
     public void temp_onClick()
     {
-        if (tempValue > 50)
+        if (tempValue > 25)
         {
             icepack.SetActive(true);
             Invoke("falseactive", 3.0f);
         }
-        else
+        else if (tempValue <15)
         {
             stove.SetActive(true);
             Invoke("falseactive", 3.0f);
