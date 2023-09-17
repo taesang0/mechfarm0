@@ -702,7 +702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fan: {fileID: 268735191}
   fog: {fileID: 455331192}
-  humidValue: 60
+  humidValue: 70
 --- !u!4 &327943773
 Transform:
   m_ObjectHideFlags: 0
@@ -1635,6 +1635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947c7b14905fbe74facc8bf66a4a3ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterValue: 0
 --- !u!4 &608284006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3606432190436293091, guid: 94da041a1a9a8984f9b37826ff8370bd, type: 3}
@@ -5522,6 +5523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1520ef723afb991418aedc655ff880fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spotValue: 0
 --- !u!4 &1836744658 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4354678330580548523, guid: 50b9d87f37b35d14796c172dfad2aeb1, type: 3}
