@@ -93,7 +93,7 @@ public class FirebaseAuthManager : MonoBehaviour
         SafeEmail = email.Split('@')[0]; // email에서 @ 앞 부분만 가져옵니다.
 
         // 식물 이름들의 리스트
-        List<string> plantNames = new List<string> { "lettuce", "strawberry", "tomato", "watermelon" };
+        List<string> plantNames = new List<string> { "lettuce", "strawberry", "tomato", "potato" };
 
         foreach (string plantName in plantNames)
         {
