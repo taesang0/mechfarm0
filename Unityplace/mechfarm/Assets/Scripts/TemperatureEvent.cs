@@ -12,18 +12,41 @@ public class Temperature : MonoBehaviour
     DatabaseReference m_Reference;
     string userid = "leets";
     public float tempValue = 0;
+    public GameObject lettuce;
+    private Animator animator;
+
+    // public State state = State.IDLE;
+
+    void Start()
+    {
+        animator = lettuce.GetComponent<Animator>();
+        
+ 
+    }
+
+    private void Update()
+    {
+        
+    }
     public void temp_onClick()
     {
+
+        m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
+
         if (tempValue > 25)
         {
             icepack.SetActive(true);
-            //WriteData("leets", "TemperatureSensor", 1);
+            WriteData("leets", "TemperatureSensor", 1);
             Invoke("falseactive", 3.0f);
+            if (icepack.activeSelf)
+            {
+                animator.SetBool("hot",false);
+            }
         }
         else if (tempValue <15)
         {
             stove.SetActive(true);
-            //WriteData("leets", "TemperatureSensor", 2);
+            WriteData("leets", "TemperatureSensor", 2);
             Invoke("falseactive", 3.0f);
         }
     }
