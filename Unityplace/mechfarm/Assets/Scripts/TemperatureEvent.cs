@@ -17,18 +17,16 @@ public class Temperature : MonoBehaviour
         if (tempValue > 25)
         {
             icepack.SetActive(true);
-            WriteData("leets", "TemperatureSensor", 1);
+            //WriteData("leets", "TemperatureSensor", 1);
             Invoke("falseactive", 3.0f);
         }
         else if (tempValue <15)
         {
             stove.SetActive(true);
-            WriteData("leets", "TemperatureSensor", 2);
+            //WriteData("leets", "TemperatureSensor", 2);
             Invoke("falseactive", 3.0f);
-
         }
     }
-   
 
     public void falseactive()
     {

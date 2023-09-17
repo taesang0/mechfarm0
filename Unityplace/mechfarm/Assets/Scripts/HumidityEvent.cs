@@ -8,7 +8,7 @@ public class HumidityEvent : MonoBehaviour
     public GameObject fog;
     public float humidValue = 0;
     public void Humidity_onClick()
-    {
+    { 
         if (humidValue > 70)
         {
             fan.SetActive(true);
