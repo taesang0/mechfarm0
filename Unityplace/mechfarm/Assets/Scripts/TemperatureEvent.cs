@@ -48,7 +48,6 @@ public class Temperature : MonoBehaviour
             WriteData("leets", "TemperatureSensor", 2);
         }
 
- 
     } 
 
     void falseactive ()
