@@ -10,13 +10,16 @@ public class HumidityEvent : MonoBehaviour
     public GameObject fan;
     public GameObject fog;
     DatabaseReference m_Reference;
-    private FB_Read readFBScript; // Read_FB ÄÄÆ÷³ÍÆ®¸¦ ÀúÀåÇÏ±â À§ÇÑ º¯¼ö
+    private FB_Read readFBScript; // Read_FB ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Read_Plant_Database PlantDBScript;
 
     float humidity_value;
 
     void Start()
     {
         readFBScript = GameObject.Find("ReadData").GetComponent<FB_Read>();
+        PlantDBScript = GameObject.Find("Plant_Database").GetComponent<Read_Plant_Database>();
+        m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
     }
     void Update()
     {
@@ -24,7 +27,7 @@ public class HumidityEvent : MonoBehaviour
         {
             humidity_value = readFBScript.humidity;
         }
-        if (humidity_value >=60 || humidity_value<=70)
+        if (humidity_value >=PlantDBScript.plantData.Humidity_min && humidity_value<=PlantDBScript.plantData.Humidity_max)
         {
             falseactive();
         }
@@ -34,12 +37,12 @@ public class HumidityEvent : MonoBehaviour
     {
         m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        if (humidity_value > 70)
+        if (humidity_value > PlantDBScript.plantData.Humidity_max)
         {
             fan.SetActive(true);
             WriteData("leets", "HumiditySensor", 1);
         }
-        else if (humidity_value < 60)
+        else if (humidity_value < PlantDBScript.plantData.Humidity_min)
         {
             fog.SetActive(true);
             WriteData("leets", "HumiditySensor", 2);

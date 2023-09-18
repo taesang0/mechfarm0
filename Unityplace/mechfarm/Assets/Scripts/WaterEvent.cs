@@ -8,13 +8,15 @@ using Firebase.Extensions;
 public class WaterEvent : MonoBehaviour
 {
     DatabaseReference m_Reference;
-    private FB_Read readFBScript; // Read_FB ÄÄÆ÷³ÍÆ®¸¦ ÀúÀåÇÏ±â À§ÇÑ º¯¼ö
-
-    public float water_value;
-
+    private FB_Read readFBScript; // Read_FB ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Read_Plant_Database PlantDBScript;
+    float water_value;
+    public GameObject waterObject;
     void Start()
     {
         readFBScript = GameObject.Find("ReadData").GetComponent<FB_Read>();
+        PlantDBScript = GameObject.Find("Plant_Database").GetComponent<Read_Plant_Database>();
+        m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
     void Update()
@@ -23,9 +25,10 @@ public class WaterEvent : MonoBehaviour
         {
             water_value = readFBScript.soil_humidity;
         }
-        if (water_value >= 30)
+        if (water_value >= PlantDBScript.plantData.Soil_humidity_min)
         {
             falseactive();
+            Debug.Log(PlantDBScript.plantData.Soil_humidity_min);
         }
 
     }
@@ -34,16 +37,16 @@ public class WaterEvent : MonoBehaviour
     {
         m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
         
-        if (water_value < 30)
+        if (water_value < PlantDBScript.plantData.Soil_humidity_min)
         {
-            gameObject.SetActive(true);
+            waterObject.SetActive(true);
             WriteData("leets", "WaterSensor", 1);
         }
     }
 
     void falseactive()
     {
-        gameObject.SetActive(false);
+        waterObject.SetActive(false);
         WriteData("leets", "WaterSensor", 0);
     }
 

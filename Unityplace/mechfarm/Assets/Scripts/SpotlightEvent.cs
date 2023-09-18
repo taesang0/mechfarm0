@@ -9,13 +9,16 @@ public class SpotlightEvent : MonoBehaviour
 {
     
     DatabaseReference m_Reference;
-    private FB_Read readFBScript; // Read_FB ÄÄÆ÷³ÍÆ®¸¦ ÀúÀåÇÏ±â À§ÇÑ º¯¼ö
-
-    public float spotlight_value = 0;
+    private FB_Read readFBScript; // Read_FB ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Read_Plant_Database PlantDBScript;
+    float spotlight_value;
+    public GameObject lightObject;
 
     void Start()
     {
         readFBScript = GameObject.Find("ReadData").GetComponent<FB_Read>();
+        PlantDBScript = GameObject.Find("Plant_Database").GetComponent<Read_Plant_Database>();
+        m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
     void Update()
@@ -24,7 +27,7 @@ public class SpotlightEvent : MonoBehaviour
         {
             spotlight_value = readFBScript.lightness;
         }
-        if (spotlight_value >= 6000)
+        if (spotlight_value >= PlantDBScript.plantData.Light_min)
         {
             falseactive();
         }
@@ -35,16 +38,16 @@ public class SpotlightEvent : MonoBehaviour
     {
         m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        if (spotlight_value < 6000)
+        if (spotlight_value < PlantDBScript.plantData.Light_min)
         {
-            gameObject.SetActive(true);
+            lightObject.SetActive(true);
             WriteData("leets", "SpotlightSensor", 1);
         }
 
     }
     void falseactive()
     {
-        gameObject.SetActive(false);
+        lightObject.SetActive(false);
         WriteData("leets", "SpotlightSensor", 0);
     }
 

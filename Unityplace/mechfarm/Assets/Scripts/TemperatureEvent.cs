@@ -10,12 +10,15 @@ public class Temperature : MonoBehaviour
     public GameObject icepack;
     public GameObject stove;
     DatabaseReference m_Reference;
-    private FB_Read readFBScript; // Read_FB ÄÄÆ÷³ÍÆ®¸¦ ÀúÀåÇÏ±â À§ÇÑ º¯¼ö
+    private FB_Read readFBScript; // Read_FB ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Read_Plant_Database PlantDBScript;
     float temperature_value;
 
     void Start()
     {
         readFBScript = GameObject.Find("ReadData").GetComponent<FB_Read>();
+        PlantDBScript = GameObject.Find("Plant_Database").GetComponent<Read_Plant_Database>();
+        m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
     void Update()
@@ -24,7 +27,7 @@ public class Temperature : MonoBehaviour
         {
             temperature_value = readFBScript.temperature;
         }
-        if (temperature_value <= 25 || temperature_value >=15)
+        if (temperature_value <= PlantDBScript.plantData.Temperature_max&& temperature_value >=PlantDBScript.plantData.Temperature_min)
         {
             falseactive(); 
         }
@@ -36,13 +39,13 @@ public class Temperature : MonoBehaviour
 
         m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        if (temperature_value > 25)
+        if (temperature_value > PlantDBScript.plantData.Temperature_max)
         {
             icepack.SetActive(true);
             WriteData("leets", "TemperatureSensor", 1);
         }
 
-        else if (temperature_value < 15)
+        else if (temperature_value < PlantDBScript.plantData.Temperature_min)
         {
             stove.SetActive(true);
             WriteData("leets", "TemperatureSensor", 2);
