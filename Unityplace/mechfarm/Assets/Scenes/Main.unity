@@ -803,7 +803,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 608284004}
+      - m_Target: {fileID: 1323759101}
         m_TargetAssemblyTypeName: WaterEvent, Assembly-CSharp
         m_MethodName: Water_onClick
         m_Mode: 1
@@ -3407,7 +3407,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1836744657}
+      - m_Target: {fileID: 1762436710}
         m_TargetAssemblyTypeName: SpotlightEvent, Assembly-CSharp
         m_MethodName: Spotlight_onClick
         m_Mode: 1

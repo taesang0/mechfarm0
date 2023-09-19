@@ -28,7 +28,7 @@ public class WaterEvent : MonoBehaviour
         if (water_value >= PlantDBScript.plantData.Soil_humidity_min)
         {
             falseactive();
-            Debug.Log(PlantDBScript.plantData.Soil_humidity_min);
+           // Debug.Log(PlantDBScript.plantData.Soil_humidity_min);
         }
 
     }
@@ -36,7 +36,7 @@ public class WaterEvent : MonoBehaviour
     public void Water_onClick()
     {
         m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
-        
+        Debug.Log(PlantDBScript.plantData.Soil_humidity_min);
         if (water_value < PlantDBScript.plantData.Soil_humidity_min)
         {
             waterObject.SetActive(true);
