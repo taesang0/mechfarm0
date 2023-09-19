@@ -799,10 +799,10 @@ namespace Unity.VisualScripting.Generated.Aot
 	// TMPro.TMP_SubMeshUI.op_Inequality
 	// --------------- Plugin Stubs
 	// --------------- Asset Stubs
+	// UnityEngine.Vector3.x
 	// UnityEngine.Transform.position
 	// UnityEngine.Transform.Translate
 	// UnityEngine.Time.deltaTime
-	// UnityEngine.Vector3.x
 	// --------------- Scene Stubs
 	// --------------- Scene Stubs
 	// --------------- Scene Stubs
@@ -9951,6 +9951,18 @@ namespace Unity.VisualScripting.Generated.Aot
 			optimized.Invoke(default(object[]));
 		}
 		
+		// UnityEngine.Vector3.x
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void UnityEngine_Vector3_x()
+		{
+			global::UnityEngine.Vector3 target = default(global::UnityEngine.Vector3);
+			float accessor = target.x;
+			target.x = default(float);
+			global::Unity.VisualScripting.ReflectionFieldAccessor optimized = new global::Unity.VisualScripting.ReflectionFieldAccessor(default(global::System.Reflection.FieldInfo));
+			optimized.GetValue(default(global::UnityEngine.Vector3));
+			optimized.SetValue(default(global::UnityEngine.Vector3), default(float));
+		}
+		
 		// UnityEngine.Transform.position
 		[global::UnityEngine.Scripting.PreserveAttribute()]
 		public static void UnityEngine_Transform_position()
@@ -9984,18 +9996,6 @@ namespace Unity.VisualScripting.Generated.Aot
 			float accessor = global::UnityEngine.Time.deltaTime;
 			global::Unity.VisualScripting.StaticPropertyAccessor<float> optimized = new global::Unity.VisualScripting.StaticPropertyAccessor<float>(default(global::System.Reflection.PropertyInfo));
 			optimized.GetValue(null);
-		}
-		
-		// UnityEngine.Vector3.x
-		[global::UnityEngine.Scripting.PreserveAttribute()]
-		public static void UnityEngine_Vector3_x()
-		{
-			global::UnityEngine.Vector3 target = default(global::UnityEngine.Vector3);
-			float accessor = target.x;
-			target.x = default(float);
-			global::Unity.VisualScripting.ReflectionFieldAccessor optimized = new global::Unity.VisualScripting.ReflectionFieldAccessor(default(global::System.Reflection.FieldInfo));
-			optimized.GetValue(default(global::UnityEngine.Vector3));
-			optimized.SetValue(default(global::UnityEngine.Vector3), default(float));
 		}
 	}
 }
