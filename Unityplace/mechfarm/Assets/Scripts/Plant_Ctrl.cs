@@ -9,6 +9,7 @@ public class Plant_Ctrl : MonoBehaviour
     string max_state;
     float max_value;
     private Animator animator;
+    public GameObject icepack;
     // public State state = State.IDLE;
 
     private void Awake()
@@ -85,12 +86,12 @@ public class Plant_Ctrl : MonoBehaviour
             ani.SetBool("cold",false);
             ani.SetBool("smile",false);
         }
-        else if (state == "temperature_H")
+        else if (state == "temperature_H" || !icepack.activeSelf)
         {
-            ani.SetBool("dry",false);
-            ani.SetBool("hot",true);
-            ani.SetBool("cold",false);
-            ani.SetBool("smile",false);
+            // ani.SetBool("dry",false);
+            // ani.SetBool("hot",true);
+            // ani.SetBool("cold",false);
+            // ani.SetBool("smile",false);
         }
         else if (state == "temperature_L")
         {

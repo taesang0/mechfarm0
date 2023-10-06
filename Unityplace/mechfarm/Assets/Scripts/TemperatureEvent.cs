@@ -10,28 +10,54 @@ public class Temperature : MonoBehaviour
     public GameObject icepack;
     public GameObject stove;
     DatabaseReference m_Reference;
-    string userid = "leets";
-    public float tempValue = 0;
-    public void temp_onClick()
+    private FB_Read readFBScript; // Read_FB ������Ʈ�� �����ϱ� ���� ����
+    private Read_Plant_Database PlantDBScript;
+    float temperature_value;
+
+    void Start()
     {
-        if (tempValue > 25)
-        {
-            icepack.SetActive(true);
-            //WriteData("leets", "TemperatureSensor", 1);
-            Invoke("falseactive", 3.0f);
-        }
-        else if (tempValue <15)
-        {
-            stove.SetActive(true);
-            //WriteData("leets", "TemperatureSensor", 2);
-            Invoke("falseactive", 3.0f);
-        }
+        readFBScript = GameObject.Find("ReadData").GetComponent<FB_Read>();
+        PlantDBScript = GameObject.Find("Plant_Database").GetComponent<Read_Plant_Database>();
+        m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
-    public void falseactive()
+    void Update()
+    {
+        if (readFBScript != null)
+        {
+            temperature_value = readFBScript.temperature;
+        }
+        if (temperature_value <= PlantDBScript.plantData.Temperature_max&& temperature_value >=PlantDBScript.plantData.Temperature_min)
+        {
+            falseactive(); 
+        }
+ 
+    }
+
+    public void temp_onClick()
+    {
+
+        m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        if (temperature_value > PlantDBScript.plantData.Temperature_max)
+        {
+            icepack.SetActive(true);
+            WriteData("leets", "TemperatureSensor", 1);
+        }
+
+        else if (temperature_value < PlantDBScript.plantData.Temperature_min)
+        {
+            stove.SetActive(true);
+            WriteData("leets", "TemperatureSensor", 2);
+        }
+
+    } 
+
+    void falseactive ()
     {
         stove.SetActive(false);
         icepack.SetActive(false);
+        WriteData("leets", "TemperatureSensor", 0);
     }
 
     void WriteData(string userId, string sensorname, int value)

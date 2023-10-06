@@ -38,6 +38,14 @@ public class Show_Gauge : MonoBehaviour
         Plant_Data[2][1] = PlantDBScript.plantData.Soil_humidity_max;
         Plant_Data[3][0] = PlantDBScript.plantData.Light_min;
         Plant_Data[3][1] = PlantDBScript.plantData.Light_max;
+        Sliders[0].minValue = PlantDBScript.plantData.Temperature_min-(PlantDBScript.plantData.Temperature_max-PlantDBScript.plantData.Temperature_min)/2;
+        Sliders[0].maxValue = PlantDBScript.plantData.Temperature_max+(PlantDBScript.plantData.Temperature_max-PlantDBScript.plantData.Temperature_min)/2;
+        Sliders[1].minValue = PlantDBScript.plantData.Humidity_min-(PlantDBScript.plantData.Humidity_max-PlantDBScript.plantData.Humidity_min)/2;
+        Sliders[1].maxValue = PlantDBScript.plantData.Humidity_max+(PlantDBScript.plantData.Humidity_max-PlantDBScript.plantData.Humidity_min)/2;
+        Sliders[2].minValue = PlantDBScript.plantData.Soil_humidity_min-(PlantDBScript.plantData.Soil_humidity_max-PlantDBScript.plantData.Soil_humidity_min)/2;
+        Sliders[2].maxValue = PlantDBScript.plantData.Soil_humidity_max+(PlantDBScript.plantData.Soil_humidity_max-PlantDBScript.plantData.Soil_humidity_min)/2;
+        Sliders[3].minValue = PlantDBScript.plantData.Light_min-(PlantDBScript.plantData.Light_max-PlantDBScript.plantData.Light_min)/2;
+        Sliders[3].maxValue = PlantDBScript.plantData.Light_max+(PlantDBScript.plantData.Light_max-PlantDBScript.plantData.Light_min)/2;
     }
 
     // Update is called once per frame
