@@ -14,11 +14,14 @@ public class OpenWeatherWebAPI : MonoBehaviour
     public WeatherData weatherInfo;
     public string hour;
     public string whether;
-    public GameObject day_background;
-    public GameObject evening_background;
-    public GameObject night_background;
-    public GameObject Cloud;
-    public GameObject Rain;
+    // public GameObject day_background;
+    // public GameObject evening_background;
+    // public GameObject night_background;
+    // public GameObject Cloud;
+    // public GameObject Rain;
+    public Material skybox_night;
+    public Material skybox_day;
+    public Material skybox_evening;
 
 
     // Start is called before the first frame update
@@ -58,13 +61,13 @@ public class OpenWeatherWebAPI : MonoBehaviour
 
             if (whether == "Clouds")
             {
-                Cloud.SetActive(true);
-                Rain.SetActive(false);
+                // Cloud.SetActive(true);
+                // Rain.SetActive(false);
             }
             else if (whether == "Rain")
             {
-                Cloud.SetActive(true);
-                Rain.SetActive(true);
+                // Cloud.SetActive(true);
+                // Rain.SetActive(true);
             }
         }
         
@@ -78,21 +81,28 @@ public class OpenWeatherWebAPI : MonoBehaviour
             
             if(int.Parse(hour) >= 6 && int.Parse(hour)<= 18)//day
             {
-                day_background.SetActive(true);
-                evening_background.SetActive(false);
-                night_background.SetActive(false);
+                // day_background.SetActive(true);
+                // evening_background.SetActive(false);
+                // night_background.SetActive(false);
+                RenderSettings.skybox = skybox_day;
+
             }
             else if(int.Parse(hour) < 6 || int.Parse(hour) >= 20) // night
             {
-                day_background.SetActive(false);
-                evening_background.SetActive(false);
-                night_background.SetActive(true);
+                // day_background.SetActive(false);
+                // evening_background.SetActive(false);
+                // night_background.SetActive(true);
+                RenderSettings.skybox = skybox_night;
+                Debug.Log("night");
+
             }
             else
             {
-                day_background.SetActive(false);
-                evening_background.SetActive(true);
-                night_background.SetActive(false);
+                // day_background.SetActive(false);
+                // evening_background.SetActive(true);
+                // night_background.SetActive(false);
+                RenderSettings.skybox = skybox_evening;
+
             }
 
 
