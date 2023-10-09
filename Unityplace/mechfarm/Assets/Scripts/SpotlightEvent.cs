@@ -12,7 +12,11 @@ public class SpotlightEvent : MonoBehaviour
     private FB_Read readFBScript; // Read_FB ������Ʈ�� �����ϱ� ���� ����
     private Read_Plant_Database PlantDBScript;
     float spotlight_value;
-    public GameObject lightObject;
+    public GameObject lightObject1;
+    public GameObject lightObject2;
+    public GameObject lightObject3;
+    public GameObject lightObject4;
+    public GameObject lightObject5;
 
     void Start()
     {
@@ -40,14 +44,23 @@ public class SpotlightEvent : MonoBehaviour
 
         if (spotlight_value < PlantDBScript.plantData.Light_min)
         {
-            lightObject.SetActive(true);
+            lightObject1.SetActive(true);
+            lightObject2.SetActive(true);
+            lightObject3.SetActive(true);
+            lightObject4.SetActive(true);
+            lightObject5.SetActive(true);
             WriteData("leets", "SpotlightSensor", 1);
         }
 
     }
     void falseactive()
     {
-        lightObject.SetActive(false);
+        lightObject1.SetActive(false);
+        lightObject2.SetActive(false);
+        lightObject3.SetActive(false);
+        lightObject4.SetActive(false);
+        lightObject5.SetActive(false);
+
         WriteData("leets", "SpotlightSensor", 0);
     }
 

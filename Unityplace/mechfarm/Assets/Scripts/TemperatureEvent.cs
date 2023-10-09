@@ -7,8 +7,7 @@ using Firebase.Extensions;
 
 public class Temperature : MonoBehaviour
 {
-    public GameObject icepack;
-    public GameObject stove;
+    public GameObject wind;
     DatabaseReference m_Reference;
     private FB_Read readFBScript; // Read_FB ������Ʈ�� �����ϱ� ���� ����
     private Read_Plant_Database PlantDBScript;
@@ -41,13 +40,12 @@ public class Temperature : MonoBehaviour
 
         if (temperature_value > PlantDBScript.plantData.Temperature_max)
         {
-            icepack.SetActive(true);
+            wind.SetActive(true);
             WriteData("leets", "TemperatureSensor", 1);
         }
 
         else if (temperature_value < PlantDBScript.plantData.Temperature_min)
         {
-            stove.SetActive(true);
             WriteData("leets", "TemperatureSensor", 2);
         }
 
@@ -55,8 +53,7 @@ public class Temperature : MonoBehaviour
 
     void falseactive ()
     {
-        stove.SetActive(false);
-        icepack.SetActive(false);
+        wind.SetActive(false);
         WriteData("leets", "TemperatureSensor", 0);
     }
 
