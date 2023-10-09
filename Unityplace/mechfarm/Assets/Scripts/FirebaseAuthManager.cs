@@ -92,6 +92,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
         SafeEmail = email.Split('@')[0]; // email에서 @ 앞 부분만 가져옵니다.
 
+        string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+
         // 식물 이름들의 리스트
         List<string> plantNames = new List<string> { "lettuce", "strawberry", "tomato", "potato" };
 
@@ -104,6 +106,9 @@ public class FirebaseAuthManager : MonoBehaviour
             reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("light").SetValueAsync(user.light);
             reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("soil_humi").SetValueAsync(user.soil_humi);
             reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("temp").SetValueAsync(user.temp);
+
+            // 회원가입한 날짜를 저장합니다.
+            reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("start_date").SetValueAsync(currentDate);
         }
     }
 
