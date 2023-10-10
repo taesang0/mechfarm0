@@ -37,6 +37,7 @@ public class FB_Read : MonoBehaviour
     {
 
     }
+
     private void HandleValueChanged(object sender, ValueChangedEventArgs args)
     {
         if (args.DatabaseError != null)
@@ -51,6 +52,7 @@ public class FB_Read : MonoBehaviour
             ReadUserData();
         }
     }
+    
     void ReadUserData()
     {
         FirebaseDatabase.DefaultInstance.GetReference("users")
@@ -64,10 +66,6 @@ public class FB_Read : MonoBehaviour
             {
                 DataSnapshot snapshot = task.Result;
                 // Do something with snapshot...
-            // for ( int i = 0; i < snapshot.ChildrenCount; i++)
-            //     Debug.Log(snapshot.Child(i.ToString()).Child("username").Value);
-              
-            // }
                 for ( int i = 0; i < datatype.Count; i++){
                     // Debug.Log(snapshot.Child(userid).Child("plant").Child("lettuce").Child(datatype[i]).Value);
                     data = Convert.ToSingle(snapshot.Child(userid).Child("plant").Child("lettuce").Child(datatype[i]).Value);
@@ -79,10 +77,7 @@ public class FB_Read : MonoBehaviour
                     else if (datatype[i]=="light") lightness=data;
                 }
                 Debug.Log("temp: " + temperature.ToString() + " humi: " + humidity.ToString() + " soil_humi: " + soil_humidity.ToString() + " light: " + lightness.ToString());
-
             }
         });
     }
-
-
 }
