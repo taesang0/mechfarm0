@@ -14,17 +14,19 @@ public class FirebaseAuthManager : MonoBehaviour
     private FirebaseAuth auth;
     private FirebaseUser user;
 
+    public TMP_InputField userName;
     public TMP_InputField email;
     public TMP_InputField password;
     public static string SafeEmail;
 
     public string DBurl = "https://farm0-b92d3-default-rtdb.firebaseio.com/";
     DatabaseReference reference;
-    private bool state;
+    private bool state, state2;
 
     private void Start()
     {
         auth = FirebaseAuth.DefaultInstance;
+        state = false;
         state = false;
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
@@ -34,8 +36,12 @@ public class FirebaseAuthManager : MonoBehaviour
 
     }
 
+    public void MoveToSignUpScreen(){
+        SceneManager.LoadScene(4);
+    }
+
     public void Create()
-    {
+    {   
         auth.CreateUserWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task =>
         {
             if (task.IsCanceled)
@@ -51,7 +57,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
             FirebaseUser newUser = task.Result.User; // Get the FirebaseUser from AuthResult
             Debug.Log("회원가입 완료");
-            WriteDB(email.text);
+            WriteDB(userName.text);
+            state2=true;
         });
     }
 
@@ -76,7 +83,13 @@ public class FirebaseAuthManager : MonoBehaviour
     {
         if (state == true)
         {
+            state = false;
             SceneManager.LoadScene(1);
+        } 
+        else if(state2 == true)
+        {
+            state2 = false;
+            SceneManager.LoadScene(0);
         }
     }
 
@@ -86,33 +99,33 @@ public class FirebaseAuthManager : MonoBehaviour
         Debug.Log("로그아웃");
     }
 
-    public void WriteDB(string email)
+    public void WriteDB(string userName)
     {
         Debug.Log("DB 실행");
 
-        SafeEmail = email.Split('@')[0]; // email에서 @ 앞 부분만 가져옵니다.
+        //SafeEmail = email.Split('@')[0]; // email에서 @ 앞 부분만 가져옵니다.
 
         string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
 
         // 식물 이름들의 리스트
-        List<string> plantNames = new List<string> { "lettuce", "strawberry", "tomato", "potato" };
+        List<string> plantNames = new List<string> { "lettuce", "Herb" };
 
+        UserData user = new UserData(userName);
+
+        Debug.Log(user.getUserName());
         foreach (string plantName in plantNames)
         {
-            UserData user = new UserData(email, plantName); // 각 식물 이름에 대한 UserData를 생성합니다.
-
+            user.setPlantName(plantName); // 각 식물 이름에 대한 UserData를 생성합니다.
             // users/(로그인한 이메일의 @ 앞부분)/plant/(식물 이름)/ 아래에 데이터를 저장합니다.
-            reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("humi").SetValueAsync(user.humi);
-            reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("light").SetValueAsync(user.light);
-            reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("soil_humi").SetValueAsync(user.soil_humi);
-            reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("temp").SetValueAsync(user.temp);
+            reference.Child("users").Child(user.getUserName()).Child("plant").Child(plantName).Child("humi").SetValueAsync(user.humi);
+            reference.Child("users").Child(user.getUserName()).Child("plant").Child(plantName).Child("light").SetValueAsync(user.light);
+            reference.Child("users").Child(user.getUserName()).Child("plant").Child(plantName).Child("soil_humi").SetValueAsync(user.soil_humi);
+            reference.Child("users").Child(user.getUserName()).Child("plant").Child(plantName).Child("temp").SetValueAsync(user.temp);
 
             // 회원가입한 날짜를 저장합니다.
-            reference.Child("users").Child(SafeEmail).Child("plant").Child(plantName).Child("start_date").SetValueAsync(currentDate);
+            reference.Child("users").Child(user.getUserName()).Child("plant").Child(plantName).Child("start_date").SetValueAsync(currentDate);
         }
     }
-
-
 }
 
 public class UserData
@@ -124,34 +137,36 @@ public class UserData
     public int soil_humi = 0;
     public int temp = 0;
 
-    public UserData(string userName, string defultPlantName)
-    {
+    public UserData(string userName){
         this.userName = userName;
-        this.plantName = defultPlantName;
+    }
+    
+    public string getUserName(){
+        return this.userName;
     }
 
     public void setPlantName(string plantName)
     {
-        plantName = this.plantName;
+        this.plantName = plantName;
     }
 
-    public void setHumi()
+    public void setHumi(int humi)
     {
-        humi = this.humi;
+        this.humi = humi;
     }
 
-    public void setLight()
+    public void setLight(int light)
     {
-        light = this.light;
+        this.light = light;
     }
 
-    public void setSoilHumi()
+    public void setSoilHumi(int soil_humi)
     {
-        soil_humi = this.soil_humi;
+        this.soil_humi = soil_humi;
     }
 
-    public void setTemp()
+    public void setTemp(int temp)
     {
-        temp = this.temp;
+        this.temp = temp;
     }
 }

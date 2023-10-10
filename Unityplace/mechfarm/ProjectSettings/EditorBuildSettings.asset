@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlantSetting.unity
     guid: d97300476580f274d8fee66ab4337863
+  - enabled: 1
+    path: Assets/Scenes/SignupScene.unity
+    guid: 1f77ef9731cf34ce09e16354be3237c9
   m_configObjects: {}
