@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0057866774, g: 0.011181824, b: 0.022727663, a: 1}
+  m_IndirectSpecularColor: {r: 0.005786776, g: 0.011181759, b: 0.022728024, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1136,6 +1136,7 @@ GameObject:
   - component: {fileID: 177150687}
   - component: {fileID: 177150686}
   - component: {fileID: 177150688}
+  - component: {fileID: 177150689}
   m_Layer: 0
   m_Name: Plant_Database
   m_TagString: Untagged
@@ -1210,6 +1211,20 @@ MonoBehaviour:
   - {fileID: 1230367342}
   - {fileID: 584090861}
   - {fileID: 1895423392}
+--- !u!114 &177150689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177150685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e746603261b6bda4a9f855dd3e9452d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel_help: {fileID: 1446745206}
+  txt: {fileID: 913231802}
 --- !u!1 &278338443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4989,7 +5004,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 177150689}
         m_TargetAssemblyTypeName: Show_help, Assembly-CSharp
         m_MethodName: Close_help
         m_Mode: 1
@@ -5264,7 +5279,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 177150689}
         m_TargetAssemblyTypeName: Show_help, Assembly-CSharp
         m_MethodName: Open_help
         m_Mode: 1
