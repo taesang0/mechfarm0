@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5b36a9647ceb17647a4da8c940388065
+guid: 5d43cfae2c2cb384a9e862cdb75417d9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -149,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC2A4\uD06C\uB9B0\uC0F7 2023-10-11 170318_0"
+      name: KakaoTalk_20231011_222143169_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 603
-        height: 508
+        x: 1304
+        y: 128
+        width: 1146
+        height: 2026
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,8 +163,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0202129af5f6c547a33bc4fe234b19d
-      internalID: -1420477923
+      spriteID: f0e9842ac6253c944bf35ab092209d66
+      internalID: -1472010046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KakaoTalk_20231011_222143169_1
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 118
+        width: 20
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37dabcd0ad1f2a2409a8d5569aebb6c5
+      internalID: -1719695156
       vertices: []
       indices: 
       edges: []
@@ -172,7 +193,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 467cb69af5eac69459ee7827f108abab
+    spriteID: fc4d5d418f9451047b886c80e22c4485
     internalID: 0
     vertices: []
     indices: 
@@ -180,7 +201,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uC2A4\uD06C\uB9B0\uC0F7 2023-10-11 170318_0": -1420477923
+      KakaoTalk_20231011_222143169_0: -1472010046
+      KakaoTalk_20231011_222143169_1: -1719695156
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
