@@ -116,7 +116,6 @@ public class FirebaseAuthManager : MonoBehaviour
         foreach (string plantName in plantNames)
         {
             user.setPlantName(plantName); // 각 식물 이름에 대한 UserData를 생성합니다.
-            // users/(로그인한 이메일의 @ 앞부분)/plant/(식물 이름)/ 아래에 데이터를 저장합니다.
             reference.Child("users").Child(user.getUserName()).Child("plant").Child(plantName).Child("humi").SetValueAsync(user.humi);
             reference.Child("users").Child(user.getUserName()).Child("plant").Child(plantName).Child("light").SetValueAsync(user.light);
             reference.Child("users").Child(user.getUserName()).Child("plant").Child(plantName).Child("soil_humi").SetValueAsync(user.soil_humi);
