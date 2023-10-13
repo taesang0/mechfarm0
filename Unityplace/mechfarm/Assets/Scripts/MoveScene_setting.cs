@@ -19,11 +19,14 @@ public class MoveScene_setting : MonoBehaviour
 
     public void Scenechange()
     {
-
-
         SceneManager.LoadScene("PlantSetting");
-        
-
-       
+    }
+    public void Scenechange_NewMain()
+    {
+        SceneManager.LoadScene("NewMain");
+    }
+    public void Scenechange_LoginScene()
+    {
+        SceneManager.LoadScene("LoginScene");
     }
 }
