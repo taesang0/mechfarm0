@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MoveScene_setting : MonoBehaviour
 {
+    public static string kind_of_plant;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +22,15 @@ public class MoveScene_setting : MonoBehaviour
     {
         SceneManager.LoadScene("PlantSetting");
     }
-    public void Scenechange_NewMain()
+    public void Scenechange_NewMain_lettuce()
     {
         SceneManager.LoadScene("NewMain");
+        kind_of_plant = "lettuce";
+    }
+    public void Scenechange_NewMain_herb()
+    {
+        SceneManager.LoadScene("NewMain");
+        kind_of_plant = "herb";
     }
     public void Scenechange_LoginScene()
     {

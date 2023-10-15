@@ -11,7 +11,7 @@ public class ScaleController : MonoBehaviour
 
     void Start()
     {
-        // ÀÓÀÇ·Î ¼³Á¤ÇØ³õÀ½ ( ÀÏ´Ü ³¯Â¥·Î ½ºÄÉÀÏ º¯°æ )
+        // ï¿½ï¿½ï¿½Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø³ï¿½ï¿½ï¿½ ( ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ )
         startDate = new DateTime(2023, 10, 9, 8, 23, 0);
     }
 
@@ -22,10 +22,10 @@ public class ScaleController : MonoBehaviour
         TimeSpan difference = currentDate - startDate;
         int day = difference.Days;
 
-        // day º¯¼ö°¡ 10ÀÇ ¹è¼öÀÏ ¶§¸¶´Ù scaleÀ» 1¾¿ Áõ°¡
+        // day ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ scaleï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (day % 10 == 0 && day <= 50)
         {
-            // ÇöÀçÀÇ scale °ªÀ» °¡Á®¿Â ÈÄ, x, y, z °¢°¢ 1¾¿ Áõ°¡½ÃÅ´
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ scale ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, x, y, z ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å´
             Vector3 currentScale1 = plant1.transform.localScale;
             currentScale1.x += 1f;
             currentScale1.y += 1f;
@@ -36,9 +36,9 @@ public class ScaleController : MonoBehaviour
             currentScale2.y += 1f;
             currentScale2.z += 1f;
 
-            // GameObjectÀÇ scaleÀ» º¯°æ
+            // GameObjectï¿½ï¿½ scaleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             plant1.transform.localScale = currentScale1;
-            plant1.transform.localScale = currentScale2;
+            plant2.transform.localScale = currentScale2;
         }
     }
 }
