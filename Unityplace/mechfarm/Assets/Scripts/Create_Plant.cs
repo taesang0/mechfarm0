@@ -4,6 +4,8 @@ using UnityEngine;
 using Firebase;
 using Firebase.Database;
 using Firebase.Extensions;
+using System;
+
 public class Create_Plant : MonoBehaviour
 {
     public GameObject[] Plant;
@@ -13,11 +15,22 @@ public class Create_Plant : MonoBehaviour
     DatabaseReference m_Reference;
     int number=0;
     string userid = "leets";
+    string startDate = "20231010";
+    DateTime currentDate;
+    DateTime startDateDateTime;
+    TimeSpan difference;
+    int daysDifference=0;
+    float scale=1.0f;
+    
     // Start is called before the first frame update
     void Start()
     {
+        
         m_Reference = FirebaseDatabase.DefaultInstance.RootReference;
         StartCoroutine(FetchUserData());
+        
+
+        
     }
 
     private IEnumerator FetchUserData()
@@ -36,7 +49,15 @@ public class Create_Plant : MonoBehaviour
                     DataSnapshot snapshot = task.Result;
                     number = int.Parse(snapshot.Child(userid).Child("plant").Child("lettuce").Child("number").Value.ToString());
                     Debug.Log("Number of lettuce plants: " + number);
-
+                    startDate = snapshot.Child(userid).Child("plant").Child("lettuce").Child("date").Value.ToString();
+                    // startDate를 DateTime 형식으로 변환
+                    startDateDateTime = DateTime.ParseExact(startDate, "yyyyMMdd", null);
+                    DateTime currentDate = DateTime.Now;
+                    // 두 날짜 간의 차이 계산
+                    difference = currentDate - startDateDateTime;
+                    daysDifference = difference.Days;
+                    Debug.Log(startDateDateTime+"Days : "+currentDate);
+                    scale = daysDifference * 0.1f;
                     // Instantiate plants based on the retrieved number
                     for (int i = 0; i < number; i++)
                     {
@@ -45,6 +66,7 @@ public class Create_Plant : MonoBehaviour
                             GameObject instance = Instantiate(Plant[0]);
                             instance.transform.position = Spawnpoint[i].position;
                             instance.SetActive(true);
+                            instance.transform.localScale = new Vector3(scale,scale,scale);
                             myInstance.Add(instance);
                         }
                         else if (MoveScene_setting.kind_of_plant == "herb")
@@ -52,6 +74,7 @@ public class Create_Plant : MonoBehaviour
                             GameObject instance = Instantiate(Plant[1]);
                             instance.transform.position = Spawnpoint[i].position;
                             instance.SetActive(true);
+                            instance.transform.localScale = new Vector3(scale,scale,scale);
                             myInstance.Add(instance);
                         }
                         else
@@ -59,6 +82,7 @@ public class Create_Plant : MonoBehaviour
                             GameObject instance = Instantiate(Plant[0]);
                             instance.transform.position = Spawnpoint[i].position;
                             instance.SetActive(true);
+                            instance.transform.localScale = new Vector3(scale,scale,scale);
                             myInstance.Add(instance);
                         }
 
@@ -67,6 +91,7 @@ public class Create_Plant : MonoBehaviour
                     }
                 }
             });
+
     }
 
     // void Start()
@@ -120,6 +145,8 @@ public class Create_Plant : MonoBehaviour
                 // Debug.Log(snapshot.Child(userid).Child("plant").Child("lettuce").Child("number").Value.ToString());
                 number = int.Parse(snapshot.Child(userid).Child("plant").Child("lettuce").Child("number").Value.ToString());
                 Debug.Log(number);
+                startDate = snapshot.Child(userid).Child("plant").Child("lettuce").Child("number").Value.ToString();
+                Debug.Log(startDate);
             }
         });
         
