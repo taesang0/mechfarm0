@@ -5,6 +5,7 @@ using Firebase;
 using Firebase.Database;
 using Firebase.Extensions;
 using System;
+using TMPro;
 
 public class Create_Plant : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Create_Plant : MonoBehaviour
     public Transform[] Spawnpoint;
     // public GameObject[] myInstance;
     public List<GameObject> myInstance = new List<GameObject>();
+    public TMP_Text textt;
+
     DatabaseReference m_Reference;
     int number=0;
     string userid = "leets";
@@ -19,9 +22,9 @@ public class Create_Plant : MonoBehaviour
     DateTime currentDate;
     DateTime startDateDateTime;
     TimeSpan difference;
+    
     int daysDifference=0;
     float scale=1.0f;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +59,7 @@ public class Create_Plant : MonoBehaviour
                     // 두 날짜 간의 차이 계산
                     difference = currentDate - startDateDateTime;
                     daysDifference = difference.Days;
+                    textt.text=daysDifference.ToString();
                     Debug.Log(startDateDateTime+"Days : "+currentDate);
                     scale = daysDifference * 0.1f;
                     // Instantiate plants based on the retrieved number
@@ -63,7 +67,7 @@ public class Create_Plant : MonoBehaviour
                     {
                         if (MoveScene_setting.kind_of_plant == "lettuce")
                         {
-                            GameObject instance = Instantiate(Plant[0]);
+                            GameObject instance = Instantiate(Plant[1]);
                             instance.transform.position = Spawnpoint[i].position;
                             instance.SetActive(true);
                             instance.transform.localScale = new Vector3(scale,scale,scale);
@@ -71,7 +75,7 @@ public class Create_Plant : MonoBehaviour
                         }
                         else if (MoveScene_setting.kind_of_plant == "herb")
                         {
-                            GameObject instance = Instantiate(Plant[1]);
+                            GameObject instance = Instantiate(Plant[0]);
                             instance.transform.position = Spawnpoint[i].position;
                             instance.SetActive(true);
                             instance.transform.localScale = new Vector3(scale,scale,scale);

@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 15
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2375,9 +2375,9 @@ MonoBehaviour:
     cod: 0
   hour: 
   whether: 
-  skybox_night: {fileID: 2100000, guid: 322c7ac465203404390167d602aa5426, type: 2}
+  skybox_night: {fileID: 2100000, guid: 67a35ecfce05fc947bc0c9ca4cf37b3a, type: 2}
   skybox_day: {fileID: 2100000, guid: 67a35ecfce05fc947bc0c9ca4cf37b3a, type: 2}
-  skybox_evening: {fileID: 2100000, guid: 6850a80f35f9d5a42ac20e48b88b6590, type: 2}
+  skybox_evening: {fileID: 2100000, guid: 67a35ecfce05fc947bc0c9ca4cf37b3a, type: 2}
 --- !u!4 &558341196
 Transform:
   m_ObjectHideFlags: 0
@@ -5324,6 +5324,7 @@ MonoBehaviour:
   - {fileID: 1662829343}
   - {fileID: 533262786}
   myInstance: []
+  textt: {fileID: 200172971}
 --- !u!4 &1337499529
 Transform:
   m_ObjectHideFlags: 0

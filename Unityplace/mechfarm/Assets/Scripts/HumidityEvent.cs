@@ -41,12 +41,12 @@ public class HumidityEvent : MonoBehaviour
         if (humidity_value > PlantDBScript.plantData.Humidity_max)
         {
             //fan.SetActive(true);
-            WriteData("leets", "HumiditySensor", 1);
+            WriteData("leets", "HumiditySensor", 0);
         }
         else if (humidity_value < PlantDBScript.plantData.Humidity_min)
         {
             fog.SetActive(true);
-            WriteData("leets", "HumiditySensor", 2);
+            WriteData("leets", "HumiditySensor", 1);
         }
 
     }

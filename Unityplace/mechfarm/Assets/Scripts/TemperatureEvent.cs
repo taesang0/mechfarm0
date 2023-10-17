@@ -41,7 +41,7 @@ public class Temperature : MonoBehaviour
         if (temperature_value > PlantDBScript.plantData.Temperature_max)
         {
             wind.SetActive(true);
-            WriteData("leets", "TemperatureSensor", 1);
+            WriteData("leets", "TemperatureSensor", 0);
         }
 
         else if (temperature_value < PlantDBScript.plantData.Temperature_min)
@@ -54,7 +54,7 @@ public class Temperature : MonoBehaviour
     void falseactive ()
     {
         wind.SetActive(false);
-        WriteData("leets", "TemperatureSensor", 0);
+        WriteData("leets", "TemperatureSensor", 1);
     }
 
     void WriteData(string userId, string sensorname, int value)
